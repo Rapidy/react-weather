@@ -17,6 +17,14 @@ function App() {
     long: 73.3686,
   });
 
+  const checkWeatherCondition = () => {
+    if (isLoaded) {
+      const weatherCondition =
+        weather.weather[0].id >= 300 && weather.weather[0].id <= 600 ? 'rain' : 'clear';
+      setActiveWeather(weatherCondition);
+    }
+  };
+
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&appid=50593473d5676fb8352c434138876ed0&lang=ru&units=${activeTempType}`;
 
   useEffect(() => {
@@ -25,15 +33,15 @@ function App() {
       .then((resp) => setWeather(resp.data))
       .then(() => {
         setIsLoaded(true);
-
-        const weatherCondition =
-          weather.weather[0].id >= 300 && weather.weather[0].id < 600 ? 'rain' : 'clear';
-        setActiveWeather(weatherCondition);
+        checkWeatherCondition();
       });
   }, []);
 
   useEffect(() => {
-    axios.get(url).then((resp) => setWeather(resp.data));
+    axios
+      .get(url)
+      .then((resp) => setWeather(resp.data))
+      .then(() => checkWeatherCondition());
   }, [activeTempType, coords]);
 
   const onTempTypeChange = (e) => {

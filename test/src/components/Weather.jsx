@@ -29,7 +29,7 @@ export default function Weather({ temp, descr, weatherId }) {
     <main className='weather'>
       <h1>
         <img src={currentWeather} alt='Weather icon' />
-        {temp.toFixed()}º
+        {+temp.toFixed()}º
       </h1>
       <span>{description}</span>
     </main>
