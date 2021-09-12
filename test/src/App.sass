@@ -2,8 +2,32 @@
   height: 100vh
   &-container
     padding: 75px 75px 122px 100px
+    max-width: 1366px
     margin: 0 auto
+    display: flex
+    height: calc(100% - 222px)
+    flex-direction: column
+    align-items: space-between
+    justify-content: space-between
+  &__preloader
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100vh
+    font-size: 50px
   &.clear
     background: #498CEC
   &.rain
     background: #7290B9
+
+.weather
+  margin: 0 auto
+  text-align: center
+  h1
+    font-size: 180px
+    display: flex
+    align-items: flex-start
+    margin-bottom: -10px
+  span
+    font-size: 25px
+    margin-left: -15%

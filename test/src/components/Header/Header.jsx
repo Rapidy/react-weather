@@ -4,11 +4,16 @@ import './header.sass';
 import City from './City';
 import Temp from './Temp';
 
-export default function Header() {
+export default function Header({
+  name,
+  activeTempType,
+  onTempTypeChange,
+  onSetMyPosition,
+}) {
   return (
     <div className='header'>
-      <City />
-      <Temp />
+      <City name={name} onSetMyPosition={onSetMyPosition} />
+      <Temp activeTempType={activeTempType} onTempTypeChange={onTempTypeChange} />
     </div>
   );
 }

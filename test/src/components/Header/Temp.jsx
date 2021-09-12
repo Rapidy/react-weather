@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function Temp() {
+export default function Temp({ activeTempType, onTempTypeChange }) {
   return (
     <div className='header-temp'>
-      <button className='header-temp__btn'>C</button>
-      <button className='header-temp__btn'>F</button>
+      <button
+        id='1'
+        onClick={onTempTypeChange}
+        className={`header-temp__btn ${activeTempType === 'metric' ? 'active' : ''}`}>
+        C
+      </button>
+      <button
+        id='2'
+        onClick={onTempTypeChange}
+        className={`header-temp__btn ${activeTempType === 'imperial' ? 'active' : ''}`}>
+        F
+      </button>
     </div>
   );
 }

@@ -1,14 +1,56 @@
 .header
   display: flex
   justify-content: space-between
+  align-items: flex-start
   &-city
     &__name
       font-size: 50px
     &-btns
       display: flex
-
       &__btn
-        font-size: 18px
-        color: #ffffff60
         align-items: center
         display: flex
+        color: rgba(#fff, .6)
+        font-size: 18px
+        &:first-of-type
+          margin-right: 29px
+        img
+          margin-right: 5px
+        &:hover
+          color: rgba(#000, .6)
+          img
+            filter: brightness(0)
+
+  &-temp
+    width: 78px
+    position: relative
+    display: flex
+    &::before
+      content: 'º'
+      width: 8px
+      height: 8px
+      position: absolute
+      top: 5px
+      left: -17px
+      color: rgba(#fff, .4)
+      font-size: 18px
+    &__btn
+      width: 50%
+      padding: 0 14px
+      height: 31px
+      font-size: 18px
+      color: rgba(#fff, .4)
+      line-height: 32px
+      border: 1px solid rgba(#fff, .4)
+      &:first-of-type
+        border-right: none
+        border-radius: 8px 0 0 8px
+      &:last-of-type
+        border-left: none
+        border-radius: 0 8px 8px 0
+      &:hover
+        color: rgba(#fff, .7)
+        background: rgba(#fff, .1)
+      &.active
+        background: rgba(#fff, .2)
+        color: #fff

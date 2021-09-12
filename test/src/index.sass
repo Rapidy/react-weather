@@ -1,11 +1,24 @@
+@mixin font($fname, $fstyle, $fweight, $furl)
+  @font-face
+    font-family: $fname
+    font-style: $fstyle
+    font-weight: $fweight
+    src: url($furl) format('woff2')
+
+@include font('Lato', normal, 400, './fonts/Lato-Regular.woff2')
+@include font('Lato', bold, 700, './fonts/Lato-Bold.woff2')
+
 body
   margin: 0
-  font-family: 'Lato', sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  color: #fff
 
-h1,h2,h3,h4,h5,h6
+*
+  font-family: 'Lato', sans-serif
+  color: #fff
+  transition: .2s
+
+h1, h2, h3, h4, h5, h6, p
   margin: 0
   font-weight: 400
 
@@ -14,3 +27,4 @@ button
   background: none
   outline: none
   padding: 0
+  cursor: pointer
