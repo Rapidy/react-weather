@@ -10,7 +10,7 @@ export default function Weather({ temp, descr, weatherId }) {
   const weatherDetection = () => {
     if (weatherId >= 200 && weatherId < 300) {
       setCurrentWeather(storm);
-    } else if ((weatherId >= 300) & (weatherId < 600)) {
+    } else if (weatherId >= 300 && weatherId < 600) {
       setCurrentWeather(rain);
     } else if (weatherId === 800) {
       setCurrentWeather(sun);

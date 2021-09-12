@@ -9,6 +9,7 @@ import Preloader from './components/Preloader';
 
 function App() {
   const [weather, setWeather] = useState({});
+  const [activeWeather, setActiveWeather] = useState('clear');
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeTempType, setActiveTempType] = useState('metric');
   const [coords, setCoords] = useState({
@@ -16,21 +17,23 @@ function App() {
     long: 73.3686,
   });
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&appid=50593473d5676fb8352c434138876ed0&lang=ru&units=${activeTempType}`,
-      )
-      .then((resp) => setWeather(resp.data))
-      .then(() => setIsLoaded(true));
-  }, []);
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&appid=50593473d5676fb8352c434138876ed0&lang=ru&units=${activeTempType}`;
 
   useEffect(() => {
     axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&appid=50593473d5676fb8352c434138876ed0&lang=ru&units=${activeTempType}`,
-      )
-      .then((resp) => setWeather(resp.data));
+      .get(url)
+      .then((resp) => setWeather(resp.data))
+      .then(() => {
+        setIsLoaded(true);
+
+        const weatherCondition =
+          weather.weather[0].id >= 300 && weather.weather[0].id < 600 ? 'rain' : 'clear';
+        setActiveWeather(weatherCondition);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(url).then((resp) => setWeather(resp.data));
   }, [activeTempType, coords]);
 
   const onTempTypeChange = (e) => {
@@ -47,10 +50,12 @@ function App() {
     }
   };
 
-  console.log(weather);
+  const onChangeCity = (city) => {
+    setCoords({ lat: city[0], long: city[1] });
+  };
 
   return (
-    <div className='app clear'>
+    <div className={`app ${activeWeather === 'rain' ? 'rain' : 'clear'}`}>
       {isLoaded ? (
         <div className='app-container'>
           <Header
@@ -58,6 +63,7 @@ function App() {
             activeTempType={activeTempType}
             onTempTypeChange={onTempTypeChange}
             onSetMyPosition={onSetMyPosition}
+            onChangeCity={onChangeCity}
           />
           <Weather
             temp={weather.main.temp}
