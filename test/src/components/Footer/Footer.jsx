@@ -34,25 +34,31 @@ export default function Footer({ activeTempType, wind, pressure, humidity }) {
         <div className='footer-container__item'>
           <h3>Ветер</h3>
           <p>
-            {wind.speed.toFixed()} {currentUnits}, {windSide}
+            <span>{wind.speed.toFixed()}</span> {currentUnits}, {windSide}
           </p>
         </div>
 
         <div className='footer-container__item'>
           <h3>Давление</h3>
-          <p>{pressureValue.toFixed()} мм рт. ст.</p>
+          <p>
+            <span>{pressureValue.toFixed()}</span> мм рт. ст.
+          </p>
         </div>
       </div>
 
       <div className='footer-container'>
         <div className='footer-container__item'>
           <h3>Влажность</h3>
-          <p>{humidity}%</p>
+          <p>
+            <span>{humidity}</span>%
+          </p>
         </div>
 
         <div className='footer-container__item'>
           <h3>Вероятность дождя</h3>
-          <p>10%</p>
+          <p>
+            <span>10</span>%
+          </p>
         </div>
       </div>
     </footer>

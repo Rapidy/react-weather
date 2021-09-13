@@ -3,7 +3,7 @@
   justify-content: space-between
   &-container
     display: flex
-    width: 40%
+    width: 41%
     justify-content: space-between
     &__item
       h3
@@ -12,3 +12,23 @@
       p
         font-size: 25px
         margin-top: 10px
+        span
+          font-weight: 700
+
+@media screen and (max-width: '1200px')
+  .footer
+    &-container
+      display: block
+      width: initial
+      &__item
+        &:not(:last-of-type)
+          margin-bottom: 35px
+
+@media screen and (max-width: '600px')
+  .footer
+    &-container
+      &__item
+        h3
+          font-size: 15px
+        p
+          font-size: 18px

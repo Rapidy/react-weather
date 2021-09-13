@@ -1,14 +1,13 @@
 .app
-  height: 100vh
   &-container
-    padding: 75px 75px 122px 100px
     max-width: 1366px
     margin: 0 auto
     display: flex
-    height: calc(100% - 222px)
     flex-direction: column
     align-items: space-between
     justify-content: space-between
+    height: calc(100vh - 197px)
+    padding: 75px 75px 122px 100px
   &__preloader
     display: flex
     align-items: center
@@ -30,4 +29,27 @@
     margin-bottom: -10px
   span
     font-size: 25px
-    margin-left: -15%
+
+@media screen and (max-width: '900px')
+  .weather
+    h1
+      font-size: 120px
+      font-weight: 300
+      align-items: center
+      img
+        width: 150px
+        height: 150px
+
+@media screen and (max-width: '800px')
+  .app
+    &-container
+      padding: 19px 19px 41px
+      height: calc(100vh - 60px)
+
+@media screen and (max-width: '600px')
+  .weather
+    h1
+      font-size: 90px
+      img
+        width: 120px
+        height: 120px

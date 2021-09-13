@@ -1,7 +1,7 @@
 .header
   display: flex
   justify-content: space-between
-  align-items: flex-start
+  align-items: center
   &-city
     position: relative
     width: 580px
@@ -10,7 +10,6 @@
       background: #fff
       position: absolute
       top: 0
-      bottom: 0
       left: 0
       right: 0
       padding: 30px
@@ -44,6 +43,9 @@
       font-size: 50px
     &-btns
       display: flex
+      &.hide
+        opacity: 0
+        pointer-events: none
       &__btn
         align-items: center
         display: flex
@@ -60,7 +62,6 @@
 
   &-temp
     width: 78px
-    position: relative
     display: flex
     &::before
       content: 'º'
@@ -91,3 +92,38 @@
       &.active
         background: rgba(#fff, .2)
         color: #fff
+
+@media screen and (max-width: '900px')
+  .header
+    &-city
+      width: 80%
+
+@media screen and (max-width: '800px')
+  .header
+    &-city
+      width: 100%
+    &-temp
+      right: 19px
+      top: 19px
+      position: absolute
+
+@media screen and (max-width: '600px')
+  .header
+    &-city
+      &__name
+        font-size: 30px
+      &-change
+        padding: 17px
+        align-items: center
+        &__input, &__btn
+          font-size: 15px
+          &::-webkit-calendar-picker-indicator
+            margin-top: -3px
+
+@media screen and (max-width: '450px')
+  .header
+    &-city
+      &-btns
+        margin-top: 8px
+        &__btn
+          font-size: 15px

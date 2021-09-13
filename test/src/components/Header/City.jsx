@@ -37,7 +37,7 @@ export default function City({ name, onSetMyPosition, onChangeCity }) {
   return (
     <div className='header-city'>
       <h2 className='header-city__name'>{name}</h2>
-      <div className='header-city-btns'>
+      <div className={`header-city-btns ${showSearch ? 'hide' : ''}`}>
         <button onClick={onShowSearch} className='header-city-btns__btn'>
           Сменить город
         </button>
